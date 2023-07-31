@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="icon" type="image/x-icon" href="http://icons.iconarchive.com/icons/tristan-edwards/sevenesque/1024/Calculator-icon.png">
+    <style>
+        body {
+           font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            background-image: url("https://wallup.net/wp-content/uploads/mixed/All_Math_Formula_Picture.jpg");
+        }
+        #calculator {
+            width: 300px;
+            margin-top: 10%;
+            margin-left: 40%;
+            padding: 20px;
+            border: 2px solid rgb(67, 66, 64);
+            background-color: rgb(222, 160, 26);
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            font-size: 20px;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        button {
+            font-size: 18px;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            border-radius: 10px;
+        }
+        #row1 {
+            margin-bottom: 7px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="calculator"> 
+        <div id="row1">
+            <input type="text" id="result" readonly>
+        
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendCharacter('%')">%</button>
+            <button onclick="appendCharacter('/')">/</button>
+            <button onclick="appendCharacter('*')">*</button>
+        </div>
+        <div>
+            <button onclick="appendCharacter('7')">7</button>
+            <button onclick="appendCharacter('8')">8</button>
+            <button onclick="appendCharacter('9')">9</button>
+            <button onclick="appendCharacter('-')">-</button>
+        </div>
+        <div>
+            <button onclick="appendCharacter('4')">4</button>
+            <button onclick="appendCharacter('5')">5</button>
+            <button onclick="appendCharacter('6')">6</button>
+            <button onclick="appendCharacter('+')">+</button>
+        </div>
+        <div>
+            <button onclick="appendCharacter('1')">1</button>
+            <button onclick="appendCharacter('2')">2</button>
+            <button onclick="appendCharacter('3')">3</button>
+            <button onclick="appendCharacter('0')">0</button>
+        </div>
+        <div>
+            <button onclick="appendCharacter('.')">.</button>
+            <button onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        function clearDisplay() {
+            document.getElementById('result').value = '';
+        }
+
+        function appendCharacter(value) {
+            document.getElementById('result').value += value;
+        }
+
+        function calculate() {
+            try {
+                const expression = document.getElementById('result').value;
+                const result = eval(expression);
+                document.getElementById('result').value = result;
+            } catch (error) {
+                document.getElementById('result').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
